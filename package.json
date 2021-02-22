@@ -7,6 +7,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "node-sass": "^5.0.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
@@ -14,6 +17,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.4",
     "postcss": "^8.2.6",
+    "sass": "^1.32.8",
     "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "^2.0.3",
     "typescript": "^4.1.3",

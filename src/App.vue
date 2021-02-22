@@ -1,27 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" class="mx-auto"/>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div class=" bg-pink-bg h-screen">
+    <app-header />
+    <Login />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from './components/AppHeader.vue'
+import Login from './components/Login.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    AppHeader,
+    Login
   }
 })
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 </style>
