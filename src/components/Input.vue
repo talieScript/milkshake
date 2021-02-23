@@ -1,0 +1,31 @@
+<template>
+  <div class="my-5 w-72">
+    <label :for="label" class="block text-white text-lg">{{ label }}</label>
+    <input
+      :type="password ? 'password' : 'text'"
+      :autofocus="autofocus"
+      :id="label"
+      class="px-4 py-3 mt-1 focus:outline-none bg-gray-100 w-full rounded-2xl font-semibold"
+      :placeholder="placeholder"
+    />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    return {};
+  },
+  props: {
+    label: String,
+    placeholder: String,
+    autofocus: Boolean,
+    required: Boolean,
+    password: Boolean,
+  },
+});
+</script>
+
+<style scoped></style>

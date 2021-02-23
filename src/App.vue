@@ -1,24 +1,26 @@
 <template>
-  <div class=" bg-pink-bg h-screen">
+  <div class="bg-pink-bg h-screen">
     <app-header />
-    <Login />
+    <div>
+      <Login />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import AppHeader from './components/AppHeader.vue'
-import Login from './components/Login.vue'
+import { defineComponent } from 'vue';
+import AppHeader from './components/AppHeader.vue';
+import Login from './components/Login.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     AppHeader,
-    Login
-  }
-})
+    Login,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 </style>
