@@ -2,7 +2,7 @@
   <div class="bg-pink-bg h-screen">
     <app-header />
     <div>
-      <Login />
+      <Register />
     </div>
   </div>
 </template>
@@ -11,12 +11,14 @@
 import { defineComponent } from 'vue';
 import AppHeader from './components/AppHeader.vue';
 import Login from './components/Login.vue';
+import Register from './components/Register.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     AppHeader,
     Login,
+    Register,
   },
 });
 </script>
