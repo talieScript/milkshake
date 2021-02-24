@@ -45,8 +45,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import BasicButton from './BasicButton.vue';
-import Input from './Input.vue';
+import BasicButton from '../components/BasicButton.vue';
+import Input from '../components/Input.vue';
 
 export default defineComponent({
   components: { Input, BasicButton },

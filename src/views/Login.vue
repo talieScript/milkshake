@@ -18,20 +18,20 @@
       autofocus
       password
     />
-    <button
-      @click.prevent
+    <router-link
+      to="/register"
       class="text-xs underline -mt-4 self-end text-white focus:outline-none"
     >
       register here
-    </button>
+    </router-link>
     <basic-button text="Log In" />
   </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Input from './Input.vue';
-import BasicButton from './BasicButton.vue';
+import BasicButton from '../components/BasicButton.vue';
+import Input from '../components/Input.vue';
 
 export default defineComponent({
   components: { Input, BasicButton },
@@ -45,7 +45,7 @@ export default defineComponent({
 .login-container {
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   @apply absolute;
 }
 [ripple] .ripple--container .ripple--body {
