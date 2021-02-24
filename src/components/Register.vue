@@ -39,24 +39,18 @@
         </router-link>
       </label>
     </div>
-    <button
-      ripple="ripple"
-      class="inline-block mt-6 px-6 py-3 font-medium leading-6 text-center text-white uppercase transition bg-teal-400 rounded-full shadow hover:shadow-lg focus:outline-none w-72"
-    >
-      Continue
-    </button>
+    <basic-button text="Sign Up" />
   </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import BasicButton from './BasicButton.vue';
 import Input from './Input.vue';
 
 export default defineComponent({
-  components: { Input },
-  setup() {
-    return {};
-  },
+  components: { Input, BasicButton },
+  setup() {},
 });
 </script>
 
@@ -66,11 +60,5 @@ export default defineComponent({
   left: 50%;
   transform: translate(-50%, -50%);
   @apply absolute;
-}
-[ripple] .ripple--container .ripple--body {
-  opacity: 0.5 !important;
-  background-color: rgba(0, 0, 0, 0.1) !important;
-  -webkit-animation: rippler 1000ms;
-  animation: rippler 1000ms;
 }
 </style>

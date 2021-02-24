@@ -24,21 +24,17 @@
     >
       register here
     </button>
-    <button
-      ripple="ripple"
-      class="inline-block mt-6 px-6 py-3 font-medium leading-6 text-center text-white uppercase transition bg-teal-400 rounded-full shadow hover:shadow-lg focus:outline-none w-72"
-    >
-      Continue
-    </button>
+    <basic-button text="Log In" />
   </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Input from './Input.vue';
+import BasicButton from './BasicButton.vue';
 
 export default defineComponent({
-  components: { Input },
+  components: { Input, BasicButton },
   setup() {
     return {};
   },
