@@ -10,13 +10,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onBeforeMount } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import AppHeader from './components/AppHeader.vue';
+import firebase from 'firebase';
 
 export default defineComponent({
   name: 'App',
   components: {
     AppHeader,
+  },
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+
+    onBeforeMount(() => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+          router.replace('/login');
+        } else if (route.path === '/login' || route.path === '/register') {
+          router.replace('/');
+        }
+      });
+    });
+    return {};
   },
 });
 </script>
