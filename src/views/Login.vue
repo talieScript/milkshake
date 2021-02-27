@@ -5,12 +5,14 @@
   >
     <h2 class="text-white text-4xl text-center mb-6 font-extrabold">Login</h2>
     <Input
+      v-model="email"
       label="Email"
       placeholder="milkman@shakeland.com"
       required
       autofocus
     />
     <Input
+      v-model="password"
       class="-mt-0"
       label="Password"
       placeholder="•••••••••••"
@@ -24,19 +26,36 @@
     >
       register here
     </router-link>
-    <basic-button text="Log In" />
+    <basic-button @click="login" text="Log In" />
   </form>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import BasicButton from '../components/BasicButton.vue';
 import Input from '../components/Input.vue';
+import firebase from 'firebase';
 
 export default defineComponent({
   components: { Input, BasicButton },
   setup() {
-    return {};
+    const email = ref('');
+    const password = ref('');
+
+    const login = () => {
+      console.log(email);
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email.value, password.value)
+        .then((data) => console.log(data))
+        .catch((err) => alert(err.message));
+    };
+
+    return {
+      login,
+      email,
+      password,
+    };
   },
 });
 </script>
