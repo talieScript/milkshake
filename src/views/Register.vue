@@ -5,22 +5,16 @@
   >
     <h2 class="text-white text-4xl text-center mb-6 font-extrabold">Sign Up</h2>
     <Input
+      v-model="email"
       label="Email"
       placeholder="milkman@shakeland.com"
       required
       autofocus
     />
     <Input
+      v-model="password"
       class="-mt-0"
       label="Password"
-      placeholder="•••••••••••"
-      required
-      autofocus
-      password
-    />
-    <Input
-      class="-mt-0"
-      label="Confirm Password"
       placeholder="•••••••••••"
       required
       autofocus
@@ -44,13 +38,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import BasicButton from '../components/BasicButton.vue';
 import Input from '../components/Input.vue';
+import firebase from 'firebase';
 
 export default defineComponent({
   components: { Input, BasicButton },
-  setup() {},
+  setup() {
+    const email = ref('');
+    const password = ref('');
+
+    const register = () => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email.value, password.value)
+        .then((user) => {
+          console.log('YAY! You have registered 🥳');
+        })
+        .catch((err) => alert(err.message));
+    };
+
+    return {
+      register,
+      email,
+      password,
+    };
+  },
 });
 </script>
 
