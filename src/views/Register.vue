@@ -28,6 +28,12 @@
       autofocus
       password
     />
+    <router-link
+      to="/login"
+      class="text-xs underline -mt-4 self-end text-white focus:outline-none"
+    >
+      Log in
+    </router-link>
     <div class="flex items-center mt-2">
       <input v-model="terms" id="terms" type="checkbox" class="h-4 w-4" />
       <label for="terms" class="ml-2"
