@@ -36,7 +36,7 @@ export default defineComponent({
         return this.value;
       },
       set(value: string) {
-        this.$emit('input', value);
+        this.$emit('update:value', value);
       },
     },
   },
