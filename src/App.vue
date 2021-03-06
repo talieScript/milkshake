@@ -1,12 +1,11 @@
 <template>
   <div class="bg-pink-bg h-screen">
     <app-header />
-    <!-- <router-view v-slot="{ Component }">
-      <transition mode="out-in" name="fade">
-        <component :is="Component" />
-      </transition>
-    </router-view> -->
-    <home />
+    <router-view v-slot="{ Component }">
+      <!-- <transition mode="out-in" name="fade"> -->
+      <component :is="Component" />
+      <!-- </transition> -->
+    </router-view>
   </div>
 </template>
 
@@ -30,9 +29,13 @@ export default defineComponent({
     onBeforeMount(() => {
       firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
-          router.replace('/login');
+          setTimeout(() => {
+            router.push('/login');
+          }, 100);
         } else if (route.path === '/login' || route.path === '/register') {
-          router.replace('/');
+          setTimeout(() => {
+            router.push('/');
+          }, 100);
         }
       });
     });
@@ -45,10 +48,11 @@ export default defineComponent({
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 .fade-leave-active,
 .fade-enter-active {
-  transition: all 0.4s;
+  transition: all 0.3s;
 }
 .fade-enter-from,
 .fade-leave-active {
   transform: translate(-50%, -50%) scale(0) !important;
+  opacity: 0;
 }
 </style>

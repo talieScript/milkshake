@@ -5,14 +5,14 @@
   >
     <h2 class="text-white text-4xl text-center mb-6 font-extrabold">Login</h2>
     <Input
-      v-model="email"
+      v-model:value="email"
       label="Email"
       placeholder="milkman@shakeland.com"
       required
       autofocus
     />
     <Input
-      v-model="password"
+      v-model:value="password"
       class="-mt-0"
       label="Password"
       placeholder="•••••••••••"
@@ -24,14 +24,14 @@
       to="/register"
       class="text-xs underline -mt-4 self-end text-white focus:outline-none"
     >
-      register here
+      register
     </router-link>
     <basic-button @click="login" text="Log In" />
   </form>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onBeforeMount } from 'vue';
 import BasicButton from '../components/BasicButton.vue';
 import Input from '../components/Input.vue';
 import firebase from 'firebase';
@@ -50,6 +50,10 @@ export default defineComponent({
         .then((data) => console.log(data))
         .catch((err) => alert(err.message));
     };
+
+    onBeforeMount(() => {
+      console.log('here');
+    });
 
     return {
       login,
