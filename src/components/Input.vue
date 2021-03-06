@@ -2,6 +2,7 @@
   <div class="my-5 w-72">
     <label :for="label" class="block text-white text-lg">{{ label }}</label>
     <input
+      v-model="localValue"
       :type="password ? 'password' : 'text'"
       :autofocus="autofocus"
       :id="label"
@@ -19,11 +20,25 @@ export default defineComponent({
     return {};
   },
   props: {
+    value: {
+      type: String,
+      required: true,
+    },
     label: String,
     placeholder: String,
     autofocus: Boolean,
     required: Boolean,
     password: Boolean,
+  },
+  computed: {
+    localValue: {
+      get(): string {
+        return this.value;
+      },
+      set(value: string) {
+        this.$emit('update:value', value);
+      },
+    },
   },
 });
 </script>

@@ -5,12 +5,15 @@
   >
     <h2 class="text-white text-4xl text-center mb-6 font-extrabold">Sign Up</h2>
     <Input
+      v-model="email"
+      v-model:value="email"
       label="Email"
       placeholder="milkman@shakeland.com"
       required
       autofocus
     />
     <Input
+      v-model:value="password"
       class="-mt-0"
       label="Password"
       placeholder="•••••••••••"
@@ -26,6 +29,12 @@
       autofocus
       password
     />
+    <router-link
+      to="/login"
+      class="text-xs underline -mt-4 self-end text-white focus:outline-none"
+    >
+      Log in
+    </router-link>
     <div class="flex items-center mt-2">
       <input v-model="terms" id="terms" type="checkbox" class="h-4 w-4" />
       <label for="terms" class="ml-2"
@@ -39,18 +48,42 @@
         </router-link>
       </label>
     </div>
-    <basic-button text="Sign Up" />
+    <basic-button @click="register" text="Sign Up" />
   </form>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import BasicButton from '../components/BasicButton.vue';
 import Input from '../components/Input.vue';
+import firebase from 'firebase';
 
 export default defineComponent({
   components: { Input, BasicButton },
-  setup() {},
+  setup() {
+    const email = ref('');
+    const password = ref('');
+
+    const register = () => {
+      console.log(email.value);
+      console.log(password.value);
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email.value, password.value)
+        .then((user) => {
+          console.log(user);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    };
+
+    return {
+      email,
+      password,
+      register,
+    };
+  },
 });
 </script>
 
