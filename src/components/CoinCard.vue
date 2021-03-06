@@ -1,5 +1,5 @@
 <template>
-  <artical class="bg-pink-silver w-1/4 px-3 py-4 text-white rounded-3xl">
+  <artical class="bg-pink-silver min-w-min px-3 py-4 text-white rounded-3xl">
     <div class="flex items-center">
       <img class="w-10 h-10 mr-4" :src="logoUrl" :alt="`${coinName} logo`" />
       <h4 class="text-white text-3xl">{{ coinName }}</h4>
