@@ -1,9 +1,9 @@
 <template>
   <div class="bg-pink-bg h-screen">
-    <app-header />
+    <app-header :user="localUser" />
     <router-view v-slot="{ Component }">
       <!-- <transition mode="out-in" name="fade"> -->
-      <component :is="Component" />
+      <component :user="user" :is="Component" />
       <!-- </transition> -->
     </router-view>
   </div>
@@ -22,23 +22,29 @@ export default defineComponent({
     AppHeader,
     Home,
   },
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-
-    onBeforeMount(() => {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (!user) {
-          setTimeout(() => {
-            router.push('/login');
-          }, 100);
-        } else if (route.path === '/login' || route.path === '/register') {
-          setTimeout(() => {
-            router.push('/');
-          }, 100);
-        }
-      });
+  data() {
+    return {
+      router: undefined as any,
+      route: undefined as any,
+      localUser: null as any,
+    };
+  },
+  created() {
+    this.router = useRouter();
+    this.route = useRoute();
+    firebase.auth().onAuthStateChanged((user) => {
+      this.localUser = user;
+      if (!user) {
+        this.router.push('/login');
+      } else if (
+        this.route.path === '/login' ||
+        this.route.path === '/register'
+      ) {
+        this.router.push('/');
+      }
     });
+  },
+  setup() {
     return {};
   },
 });

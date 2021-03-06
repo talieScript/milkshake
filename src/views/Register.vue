@@ -4,8 +4,13 @@
     class="bg-pink-silver max-w-sm px-10 py-5 rounded-3xl flex-col flex items-center login-container"
   >
     <h2 class="text-white text-4xl text-center mb-6 font-extrabold">Sign Up</h2>
-    <Input <<<<<<< HEAD v-model="email" ======= v-model:value="email" >>>>>>>
-    master label="Email" placeholder="milkman@shakeland.com" required autofocus
+    <Input
+      v-model="email"
+      v-model:value="email"
+      label="Email"
+      placeholder="milkman@shakeland.com"
+      required
+      autofocus
     />
     <Input
       v-model:value="password"

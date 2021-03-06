@@ -2,15 +2,11 @@
   <div class="flex w-full max-w-4xl justify-between mx-auto my-0 pt-3">
     <coin-card />
   </div>
-  <div>home</div>
-  <basic-button text="log out" @click="logout" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CoinCard from '../components/CoinCard.vue';
-import firebase from 'firebase';
-import { useRouter } from 'vue-router';
 import BasicButton from '../components/BasicButton.vue';
 
 export default defineComponent({
@@ -18,23 +14,7 @@ export default defineComponent({
     BasicButton,
     CoinCard,
   },
-  setup() {
-    const router = useRouter();
-    const logout = () => {
-      router.replace('/login');
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          console.log('signed out');
-        })
-        .catch((err) => alert(err.message));
-    };
-
-    return {
-      logout,
-    };
-  },
+  setup() {},
 });
 </script>
 

@@ -11,14 +11,17 @@ import firebase from 'firebase';
 import User from './User.vue';
 
 export default defineComponent({
+  props: {
+    user: {
+      type: Object,
+      required: true,
+    },
+  },
   components: {
     User,
   },
   setup() {
-    const user = firebase.auth().currentUser;
-    return {
-      user,
-    };
+    return {};
   },
 });
 </script>
