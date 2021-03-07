@@ -11,17 +11,20 @@
       <span>+</span>
     </button>
   </div>
+  <new-model />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CoinCard from '../components/CoinCard.vue';
 import BasicButton from '../components/BasicButton.vue';
+import NewModel from '../components/NewDialog.vue';
 
 export default defineComponent({
   components: {
     BasicButton,
     CoinCard,
+    NewModel,
   },
   setup() {
     const addNew = () => {
