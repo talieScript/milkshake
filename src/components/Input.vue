@@ -1,5 +1,5 @@
 <template>
-  <div class="my-5 w-72">
+  <div class="my-5 w-72" :class="`w-${width || '72'}`">
     <label :for="label" class="block text-white text-lg">{{ label }}</label>
     <input
       v-model="localValue"
@@ -29,6 +29,7 @@ export default defineComponent({
     autofocus: Boolean,
     required: Boolean,
     password: Boolean,
+    width: String,
   },
   computed: {
     localValue: {
