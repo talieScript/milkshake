@@ -4,18 +4,18 @@
     <coin-card class="card" />
     <coin-card class="card" />
     <button
-      @click="addNew"
+      @click="newDialogOpen = true"
       ripple="ripple"
       class="bg-fuchsia-100 text-gray-400 flex justify-center items-center card rounded-2xl text-4xl"
     >
       <span>+</span>
     </button>
   </div>
-  <new-model />
+  <new-model v-model:open="newDialogOpen" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import CoinCard from '../components/CoinCard.vue';
 import BasicButton from '../components/BasicButton.vue';
 import NewModel from '../components/NewDialog.vue';
@@ -26,14 +26,18 @@ export default defineComponent({
     CoinCard,
     NewModel,
   },
-  setup() {
-    const addNew = () => {
-      console.log('new');
-    };
-
+  data() {
     return {
-      addNew,
+      newDialogOpen: false,
     };
+  },
+  watch: {
+    newDialogOpen(value) {
+      console.log(value);
+    },
+  },
+  setup() {
+    return {};
   },
 });
 </script>

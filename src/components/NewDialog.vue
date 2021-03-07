@@ -1,10 +1,14 @@
 <template>
   <div
+    @click="localOpen = false"
+    :class="{ hidden: !open }"
     class="w-screen h-screen fixed top-0 left-0 bg-black bg-opacity-25 z-40 flex items-center justify-center"
-  >
+  ></div>
+  <transition name="expand">
     <dialog
+      v-if="localOpen"
       :open="true"
-      class="bg-pink-bg py-4 px-20 w-11/12 sm:w-auto text-gray-600 rounded-3xl max-w-lg"
+      class="bg-pink-bg py-4 px-20 w-11/12 sm:w-auto text-gray-600 z-50 rounded-3xl max-w-lg"
     >
       <h5 class="text-center text-white text-3xl font-bold">Add Coin</h5>
       <Input
@@ -28,7 +32,7 @@
       </ul>
       <p v-else class="text-center text-white">No coins found</p>
     </dialog>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -47,29 +51,7 @@ export default defineComponent({
   },
   data() {
     return {
-      searchResultes: [
-        {
-          id: 1,
-          imgUrl:
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png',
-          name: 'Bitcoin',
-          ticker: 'BTC',
-        },
-        {
-          id: 2,
-          imgUrl:
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png',
-          name: 'Bitcoin',
-          ticker: 'BTC',
-        },
-        {
-          id: 3,
-          imgUrl:
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png',
-          name: 'Bitcoin',
-          ticker: 'BTC',
-        },
-      ],
+      searchResultes: [],
     };
   },
   setup() {
@@ -88,11 +70,20 @@ export default defineComponent({
         return this.open;
       },
       set(value: boolean) {
-        this.$emit('setOpen');
+        this.$emit('update:open', value);
       },
     },
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.expand-enter-active,
+.expand-leave-active {
+  transition: transform 0.3s;
+}
+.expand-enter,
+.expand-leave-to {
+  transform: scale(0);
+}
+</style>
